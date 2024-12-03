@@ -1,0 +1,692 @@
+{
+  "last_node_id": 114,
+  "last_link_id": 102,
+  "nodes": [
+    {
+      "id": 102,
+      "type": "MaskToImage",
+      "pos": {
+        "0": 793,
+        "1": 592
+      },
+      "size": {
+        "0": 264.5999755859375,
+        "1": 26
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            92,
+            94
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 110,
+      "type": "MaskComposite",
+      "pos": {
+        "0": 753,
+        "1": 810
+      },
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "MASK",
+          "link": 97
+        },
+        {
+          "name": "source",
+          "type": "MASK",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            101
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskComposite"
+      },
+      "widgets_values": [
+        0,
+        0,
+        "subtract"
+      ]
+    },
+    {
+      "id": 105,
+      "type": "VHS_LoadVideo",
+      "pos": {
+        "0": -307,
+        "1": 1105
+      },
+      "size": [
+        247.455078125,
+        413.27465067455944
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            93
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "floating_in_pool_768.mp4",
+        "force_rate": 15,
+        "force_size": "Disabled",
+        "custom_width": 512,
+        "custom_height": 512,
+        "frame_load_cap": 60,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "frame_load_cap": 60,
+            "skip_first_frames": 0,
+            "force_rate": 15,
+            "filename": "floating_in_pool_768.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "select_every_nth": 1
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 108,
+      "type": "VHS_VideoCombine",
+      "pos": {
+        "0": 1342,
+        "1": 357
+      },
+      "size": [
+        214.7587890625,
+        442.1570031330334
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 92
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 15,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_01574.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 15
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 111,
+      "type": "VHS_VideoCombine",
+      "pos": {
+        "0": 1708,
+        "1": 354
+      },
+      "size": [
+        214.7587890625,
+        442.1570031330334
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 102
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 15,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_01575.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 15
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 109,
+      "type": "ImageCompositeMasked",
+      "pos": {
+        "0": 1345,
+        "1": 941
+      },
+      "size": {
+        "0": 315,
+        "1": 146
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "destination",
+          "type": "IMAGE",
+          "link": 93
+        },
+        {
+          "name": "source",
+          "type": "IMAGE",
+          "link": 94
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            102
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCompositeMasked"
+      },
+      "widgets_values": [
+        0,
+        0,
+        false
+      ]
+    },
+    {
+      "id": 106,
+      "type": "VHS_LoadVideo",
+      "pos": {
+        "0": -435,
+        "1": 447
+      },
+      "size": [
+        247.455078125,
+        413.27465067455944
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            90
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "frame_count",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "floating_in_pool_768_ball_MASK.mp4",
+        "force_rate": 15,
+        "force_size": "Disabled",
+        "custom_width": 512,
+        "custom_height": 512,
+        "frame_load_cap": 60,
+        "skip_first_frames": 0,
+        "select_every_nth": 1,
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "frame_load_cap": 60,
+            "skip_first_frames": 0,
+            "force_rate": 15,
+            "filename": "floating_in_pool_768_ball_MASK.mp4",
+            "type": "input",
+            "format": "video/mp4",
+            "select_every_nth": 1
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 114,
+      "type": "LoadImage",
+      "pos": {
+        "0": -119,
+        "1": -39
+      },
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 100,
+      "type": "StarburstNode",
+      "pos": {
+        "0": 364,
+        "1": 544
+      },
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            97,
+            100
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StarburstNode"
+      },
+      "widgets_values": [
+        16,
+        4,
+        true
+      ]
+    },
+    {
+      "id": 107,
+      "type": "MaskFromColor+",
+      "pos": {
+        "0": -49,
+        "1": 552
+      },
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            91,
+            98
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskFromColor+"
+      },
+      "widgets_values": [
+        255,
+        255,
+        255,
+        0
+      ]
+    }
+  ],
+  "links": [
+    [
+      90,
+      106,
+      0,
+      107,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      107,
+      0,
+      100,
+      0,
+      "MASK"
+    ],
+    [
+      92,
+      102,
+      0,
+      108,
+      0,
+      "IMAGE"
+    ],
+    [
+      93,
+      105,
+      0,
+      109,
+      0,
+      "IMAGE"
+    ],
+    [
+      94,
+      102,
+      0,
+      109,
+      1,
+      "IMAGE"
+    ],
+    [
+      97,
+      100,
+      0,
+      110,
+      0,
+      "MASK"
+    ],
+    [
+      98,
+      107,
+      0,
+      110,
+      1,
+      "MASK"
+    ],
+    [
+      100,
+      100,
+      0,
+      102,
+      0,
+      "MASK"
+    ],
+    [
+      101,
+      110,
+      0,
+      109,
+      2,
+      "MASK"
+    ],
+    [
+      102,
+      109,
+      0,
+      111,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "title": ":)",
+      "bounding": [
+        -2768,
+        -53,
+        1989,
+        1400
+      ],
+      "color": "#3f789e",
+      "font_size": 1000,
+      "flags": {}
+    },
+    {
+      "title": "Feature Manipulation",
+      "bounding": [
+        -2092,
+        1352,
+        1315,
+        699
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5559917313492351,
+      "offset": [
+        746.0770449332093,
+        79.21691645127352
+      ]
+    }
+  },
+  "version": 0.4
+}

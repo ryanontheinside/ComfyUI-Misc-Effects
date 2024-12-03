@@ -1,0 +1,101 @@
+{
+  "100": {
+    "inputs": {
+      "num_rays": 16,
+      "ray_thickness": 4,
+      "fill": true,
+      "mask": [
+        "115",
+        1
+      ]
+    },
+    "class_type": "StarburstNode"
+  },
+  "102": {
+    "inputs": {
+      "mask": [
+        "100",
+        0
+      ]
+    },
+    "class_type": "MaskToImage"
+  },
+  "109": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "destination": [
+        "130",
+        0
+      ],
+      "source": [
+        "102",
+        0
+      ],
+      "mask": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "ImageCompositeMasked"
+  },
+  "110": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "operation": "subtract",
+      "destination": [
+        "100",
+        0
+      ],
+      "source": [
+        "115",
+        1
+      ]
+    },
+    "class_type": "MaskComposite"
+  },
+  "115": {
+    "inputs": {
+      "reset_tracking": "[[256,256]]",
+      "coordinates_positive": "[[512,512]]",
+      "coordinates_negative": "[[900,950],[768,900],[256,800],[200,900]]",
+      "images": [
+        "130",
+        0
+      ],
+      "sam2_model": [
+        "118",
+        0
+      ]
+    },
+    "class_type": "Sam2RealtimeSegmentation"
+  },
+  "118": {
+    "inputs": {
+      "model": "sam2_hiera_tiny.pt",
+      "segmentor": "realtime",
+      "device": "cuda",
+      "precision": "fp16"
+    },
+    "class_type": "DownloadAndLoadSAM2RealtimeModel"
+  },
+  "121": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  },
+  "130": {
+    "inputs": {
+      "image": "ryan.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  }
+}
